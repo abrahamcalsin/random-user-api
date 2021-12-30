@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import { getAllUsers } from '../../services/users/get-all-users'
 import DataTable from '../data-table'
 import Loader from '../loader'
 
@@ -17,29 +18,27 @@ const RandomUser = () => {
 
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetch('https://api.randomuser.me/').then(response =>
-      response.json().then(data => {
-        const userData = {
-          picture: data.results[0].picture.large,
-          name: data.results[0].name.first,
-          lastname: data.results[0].name.last,
-          email: data.results[0].email,
-          postcode: data.results[0].location.postcode,
-          city: data.results[0].location.city,
-          phone: data.results[0].phone,
-          password: data.results[0].login.password,
-        }
+  const updateUser = () => {
+    getAllUsers().then(data => {
+      const userData = {
+        picture: data.results[0].picture.large,
+        name: data.results[0].name.first,
+        lastname: data.results[0].name.last,
+        email: data.results[0].email,
+        postcode: data.results[0].location.postcode,
+        city: data.results[0].location.city,
+        phone: data.results[0].phone,
+        password: data.results[0].login.password,
+      }
 
-        setUser(userData)
-        setLoading(false)
-      }),
-    )
-  }, [])
-
-  const onReloadPage = () => {
-    location.reload()
+      setUser(userData)
+      setLoading(false)
+    })
   }
+
+  useEffect(() => {
+    updateUser()
+  }, [])
 
   return (
     <>
@@ -69,7 +68,7 @@ const RandomUser = () => {
           </div>
           <div className="flex justify-center mt-10 mb-5">
             <button
-              onClick={onReloadPage}
+              onClick={updateUser}
               className="py-2 px-4 font-bold text-white bg-green-500 hover:bg-green-600 rounded-sm focus:ring-4 focus:ring-green-300 shadow-lg focus:outline-none"
             >
               Refresh Page
