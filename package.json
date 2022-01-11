@@ -1,8 +1,8 @@
 {
   "name": "random-user-api",
-  "description": "This is an exercise of Apis consumption.",
-  "version": "1.0",
-  "private": false,
+  "description": "",
+  "version": "",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
