@@ -1,29 +1,4 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  padding: 0 10px;
   background: #f1f3fd;
 }
-
-/* #github-corner {
-  transform-origin: 130px 106px;
-}
-#source-content:hover #github-corner {
-  animation: colaAnimated 560ms ease-in-out;
-}
-@keyframes colaAnimated {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  20%,
-  60% {
-    transform: rotate(-25deg);
-  }
-  40%,
-  80% {
-    transform: rotate(10deg);
-  }
-} */
